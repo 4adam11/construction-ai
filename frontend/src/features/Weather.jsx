@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { postJSON } from '../api'
-import { Badge, Card, Field, List, ResultArea, useSubmit } from '../components/ui'
+import { Badge, Card, Field, List, ResultArea } from '../components/ui'
+import { useSubmit } from '../lib'
 
 const ACTIVITIES = ['Concrete pouring', 'Excavation', 'Roofing', 'Crane lifting', 'Painting (exterior)', 'Brickwork', 'Steel erection']
 

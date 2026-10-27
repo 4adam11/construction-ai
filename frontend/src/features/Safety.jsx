@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { postForm } from '../api'
-import { Badge, Card, Field, ImageDrop, List, ResultArea, Stat, useSubmit } from '../components/ui'
+import { Badge, Card, Field, ImageDrop, List, ResultArea, Stat } from '../components/ui'
+import { useSubmit } from '../lib'
 
 export default function Safety() {
   const [image, setImage] = useState(null)

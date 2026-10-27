@@ -31,7 +31,14 @@ Every response, including errors, uses one envelope, and `frontend/src/api.js` c
 
 **Mock mode.** If `ANTHROPIC_API_KEY` is not set, the backend returns deterministic sample or rule-based data in the same schemas. The full UI works offline and costs nothing. The sidebar shows which mode is active.
 
-## Run it
+## Run it in VS Code
+
+1. Open the `construction-ai` folder in VS Code and install the recommended extensions when prompted.
+2. **Terminal → Run Task → `Setup: all`**. This creates the Python venv, installs packages, runs `npm install` and creates `backend/.env`.
+3. **Ctrl+Shift+B** runs `Run: full stack` (backend and frontend together), then open http://localhost:5174.
+4. To debug, open **Run and Debug** and pick `Full stack`, `Backend: FastAPI` (breakpoints in Python) or `Frontend: Vite`.
+
+## Run it from a terminal
 
 Backend (Python 3.10+):
 

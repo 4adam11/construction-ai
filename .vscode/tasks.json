@@ -1,0 +1,71 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup: backend",
+      "detail": "Create backend/.venv, install Python packages, create .env from the example",
+      "type": "shell",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "windows": {
+        "command": "if (-not (Test-Path .venv)) { python -m venv .venv }; .venv/Scripts/python -m pip install -r requirements.txt; if (-not (Test-Path .env)) { Copy-Item .env.example .env }",
+        "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] } }
+      },
+      "linux": { "command": "[ -d .venv ] || python3 -m venv .venv; .venv/bin/python -m pip install -r requirements.txt; [ -f .env ] || cp .env.example .env" },
+      "osx": { "command": "[ -d .venv ] || python3 -m venv .venv; .venv/bin/python -m pip install -r requirements.txt; [ -f .env ] || cp .env.example .env" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Setup: frontend",
+      "detail": "npm install",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Setup: all",
+      "dependsOn": ["Setup: backend", "Setup: frontend"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run: backend",
+      "detail": "FastAPI on http://localhost:8000 (docs at /docs)",
+      "type": "shell",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "windows": { "command": ".venv/Scripts/python -m uvicorn app.main:app --reload --port 8000" },
+      "linux": { "command": ".venv/bin/python -m uvicorn app.main:app --reload --port 8000" },
+      "osx": { "command": ".venv/bin/python -m uvicorn app.main:app --reload --port 8000" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Run: frontend",
+      "detail": "Vite dev server on http://localhost:5174",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Run: full stack",
+      "dependsOn": ["Run: backend", "Run: frontend"],
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build: frontend",
+      "type": "shell",
+      "command": "npm run build",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint: frontend",
+      "type": "shell",
+      "command": "npm run lint",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "problemMatcher": ["$eslint-stylish"]
+    }
+  ]
+}

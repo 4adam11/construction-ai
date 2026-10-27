@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { label } from '../lib'
 
 export const Card = ({ title, children, className = '' }) => (
   <section className={`card ${className}`}>
@@ -14,8 +15,6 @@ const TONES = {
   high: 'bad', critical: 'bad', unsuitable: 'bad', non_compliant: 'bad', delayed: 'bad',
   over_budget: 'bad', negative: 'bad', immediate: 'bad',
 }
-
-export const label = (s) => String(s).replace(/_/g, ' ')
 
 export const Badge = ({ value, tone }) => (
   <span className={`badge badge-${tone || TONES[value] || 'muted'}`}>{label(value)}</span>
@@ -94,27 +93,4 @@ export function ResultArea({ loading, error, mode, children, placeholder }) {
       {children}
     </div>
   )
-}
-
-// Shared async-submit state for every feature form.
-export function useSubmit(fn) {
-  const [state, setState] = useState({ loading: false, error: null, data: null, mode: null })
-  const run = async (...args) => {
-    setState((s) => ({ ...s, loading: true, error: null }))
-    try {
-      const { data, mode } = await fn(...args)
-      setState({ loading: false, error: null, data, mode })
-    } catch (e) {
-      setState({ loading: false, error: e.message, data: null, mode: null })
-    }
-  }
-  return [state, run]
-}
-
-export const money = (n, currency = 'INR') => {
-  try {
-    return new Intl.NumberFormat(currency === 'INR' ? 'en-IN' : 'en-US', { style: 'currency', currency, maximumFractionDigits: 0 }).format(n)
-  } catch {
-    return `${currency} ${Math.round(n).toLocaleString()}`
-  }
 }

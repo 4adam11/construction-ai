@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { postJSON } from '../api'
-import { Badge, Card, Field, List, ResultArea, Stat, money, useSubmit } from '../components/ui'
+import { Badge, Card, Field, List, ResultArea, Stat } from '../components/ui'
+import { money, useSubmit } from '../lib'
 
 const AMENITIES = ['Parking', 'Lift', 'Security', 'Power backup', 'Gym', 'Swimming pool', 'Garden', 'Clubhouse']
 

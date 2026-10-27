@@ -1,0 +1,32 @@
+{
+  // Python: use the backend virtual environment (created by the "Setup: backend" task)
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/Scripts/python.exe",
+  "python.analysis.extraPaths": ["${workspaceFolder}/backend"],
+  "python.terminal.activateEnvironment": true,
+
+  // JavaScript / React
+  "eslint.workingDirectories": ["./frontend"],
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+
+  // Editor
+  "editor.tabSize": 2,
+  "[python]": { "editor.tabSize": 4 },
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Keep generated folders out of the explorer and search
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.venv": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.venv/**": true
+  }
+}

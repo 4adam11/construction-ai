@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { postForm } from '../api'
-import { Badge, Card, Field, ImageDrop, List, ResultArea, Stat, label, useSubmit } from '../components/ui'
+import { Badge, Card, Field, ImageDrop, List, ResultArea, Stat } from '../components/ui'
+import { label, useSubmit } from '../lib'
 
 const ELEMENTS = ['Wall', 'Column', 'Beam', 'Slab', 'Foundation', 'Pavement', 'Bridge deck', 'Other']
 

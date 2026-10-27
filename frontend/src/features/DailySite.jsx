@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { postForm } from '../api'
-import { Badge, Card, Field, ImageDrop, List, ResultArea, useSubmit } from '../components/ui'
+import { Badge, Card, Field, ImageDrop, List, ResultArea } from '../components/ui'
+import { useSubmit } from '../lib'
 
 const SAMPLE = `Columns C4 to C9 cast on 2nd floor. Shuttering for slab ~80% done.
 Cement truck didn't come, supplier says tomorrow. Only 30 bags left.
