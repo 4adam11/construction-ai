@@ -31,6 +31,17 @@ Every response, including errors, uses one envelope, and `frontend/src/api.js` c
 
 **Mock mode.** If `ANTHROPIC_API_KEY` is not set, the backend returns deterministic sample or rule-based data in the same schemas. The full UI works offline and costs nothing. The sidebar shows which mode is active.
 
+## Deploy on Streamlit Community Cloud
+
+`streamlit_app.py` is a Streamlit version of the whole platform. It calls the same backend logic (`backend/app/services.py`) directly, so no separate API server is needed.
+
+1. On [share.streamlit.io](https://share.streamlit.io), click **Create app**, then **Deploy a public app from GitHub**.
+2. Repository `4adam11/construction-ai`, branch `main`, **Main file path `streamlit_app.py`**.
+3. Optional: under **Advanced settings → Secrets**, add `ANTHROPIC_API_KEY = "sk-ant-..."` for live AI. Without it the app runs in mock mode.
+4. Click **Deploy**.
+
+Run it locally with `streamlit run streamlit_app.py`. Dependencies are in the root `requirements.txt`.
+
 ## Run it in VS Code
 
 1. Open the `construction-ai` folder in VS Code and install the recommended extensions when prompted.
